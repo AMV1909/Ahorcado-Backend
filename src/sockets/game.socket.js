@@ -105,10 +105,16 @@ export const gameSocket = (io) => {
                             (player) => player.id != socket.id
                         );
 
-                        await game
-                            .updateOne({ _id }, data)
-                            .then(() => io.emit("game-" + _id, data))
-                            .catch((err) => console.log(err));
+                        if (data.players.length == 0) {
+                            await game
+                                .deleteOne({ _id })
+                                .catch((err) => console.log(err));
+                        } else {
+                            await game
+                                .updateOne({ _id }, data)
+                                .then(() => io.emit("game-" + _id, data))
+                                .catch((err) => console.log(err));
+                        }
                     }
                 })
                 .catch((err) => console.log(err));
