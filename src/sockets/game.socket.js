@@ -88,7 +88,7 @@ export const gameSocket = (io) => {
 
                     await game
                         .updateOne({ _id }, data)
-                        .then(() => io.emit("game", data))
+                        .then(() => io.emit("game-" + _id, data))
                         .catch((err) => console.log(err));
                 })
                 .catch((err) => console.log(err));
