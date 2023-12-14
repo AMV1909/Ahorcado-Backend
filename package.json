@@ -19,5 +19,8 @@
     "mongoose": "^7.0.3",
     "palabras-aleatorias-data": "^1.0.9",
     "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
   }
 }
